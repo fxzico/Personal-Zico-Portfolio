@@ -20,7 +20,7 @@ export default function MiscellaneousPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-16 text-center md:text-left"
                 >
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-400 to-slate-200">
+                    <h1 className="text-[clamp(2rem,8vw,5rem)] font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-gray-400 to-slate-200 break-words">
                         Miscellaneous
                     </h1>
                     <p className="text-xl md:text-2xl text-white/50 max-w-3xl font-light leading-relaxed">

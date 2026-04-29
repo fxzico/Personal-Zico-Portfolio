@@ -38,24 +38,57 @@ export default function ScrollyCanvas({
       (mediaQuery as any).addListener(handler);
     }
 
-    let loadedCount = 0;
-    const loadedImages: HTMLImageElement[] = [];
+    const loadedImages: HTMLImageElement[] = new Array(initialTotalFrames);
+    const PRIORITY_FRAMES = 10;
+    let priorityLoadedCount = 0;
 
-    for (let i = 0; i < initialTotalFrames; i++) {
-      const frameNum = i.toString().padStart(2, "0");
-      const img = new Image();
-      img.src = `${IMG_BASE_PATH}${frameNum}.png`;
+    // Load priority frames first
+    const loadPriorityFrames = () => {
+      const targetCount = Math.min(PRIORITY_FRAMES, initialTotalFrames);
       
-      img.onload = () => {
-        loadedCount++;
-        setLoadingProgress(Math.round((loadedCount / initialTotalFrames) * 100));
-        if (loadedCount === initialTotalFrames) {
-          setIsLoaded(true);
-        }
-      };
-      loadedImages.push(img);
-    }
-    setImages(loadedImages);
+      for (let i = 0; i < targetCount; i++) {
+        const frameNum = i.toString().padStart(2, "0");
+        const img = new Image();
+        img.src = `${IMG_BASE_PATH}${frameNum}.webp`;
+        
+        img.onload = () => {
+          loadedImages[i] = img;
+          priorityLoadedCount++;
+          setLoadingProgress(Math.round((priorityLoadedCount / targetCount) * 100));
+          
+          if (priorityLoadedCount === targetCount) {
+            setImages([...loadedImages]); // update state with initial frames
+            setIsLoaded(true); // Hide loading screen
+            loadRemainingFrames(); // Continue loading in background
+          }
+        };
+      }
+    };
+
+    // Load remaining frames in background
+    const loadRemainingFrames = () => {
+      let bgLoadedCount = 0;
+      const remainingCount = initialTotalFrames - PRIORITY_FRAMES;
+      
+      if (remainingCount <= 0) return;
+
+      for (let j = PRIORITY_FRAMES; j < initialTotalFrames; j++) {
+        const bgFrameNum = j.toString().padStart(2, "0");
+        const bgImg = new Image();
+        bgImg.src = `${IMG_BASE_PATH}${bgFrameNum}.webp`;
+        
+        bgImg.onload = () => {
+          loadedImages[j] = bgImg;
+          bgLoadedCount++;
+          // Periodically update the images array to allow rendering of newly loaded frames
+          if (bgLoadedCount % 5 === 0 || bgLoadedCount === remainingCount) {
+            setImages([...loadedImages]);
+          }
+        };
+      }
+    };
+
+    loadPriorityFrames();
 
     return () => {
       // Cleanup using guard block

@@ -12,7 +12,7 @@ const PROJECTS = [
     },
     {
         id: 2,
-        link: "https://www.linkedin.com/in/saptarshi-dutta-000174285/",
+        link: "https://www.linkedin.com/in/saptarshi-dutta-storytelling/",
         isBlank: true,
         category: "LinkedIn",
     },
@@ -37,9 +37,9 @@ export default function Projects() {
                 >
                     <h2 className="text-6xl md:text-8xl font-bold mb-4">Portfolio</h2>
                     <div className="w-20 h-1 bg-white/20 rounded-full mb-12" />
-                    
+
                     <div className="relative aspect-[21/9] w-full rounded-2xl overflow-hidden border border-white/10">
-                        <img 
+                        <img
                             src="https://drive.google.com/uc?export=view&id=1r9dRh89rvmbuDOFaGEumFRQnab5e8scd"
                             data-original-src="https://drive.google.com/file/d/1r9dRh89rvmbuDOFaGEumFRQnab5e8scd/view?usp=drive_link"
                             alt="Portfolio Cover"
@@ -64,7 +64,7 @@ export default function Projects() {
                             whileHover={{ y: -10 }}
                             className="group relative h-[400px] block"
                         >
-                            <Link 
+                            <Link
                                 href={project.link}
                                 target={project.isBlank ? "_blank" : "_self"}
                                 rel={project.isBlank ? "noopener noreferrer" : ""}

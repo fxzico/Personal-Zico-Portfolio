@@ -16,7 +16,7 @@ export default function Contact() {
                 >
                     <h2 className="text-6xl md:text-8xl font-bold mb-4">Let's Talk</h2>
                     <div className="w-20 h-1 bg-white/20 rounded-full mb-16" />
-                    
+
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
                         <div className="space-y-8">
                             <h3 className="text-3xl md:text-5xl font-light leading-snug">
@@ -25,10 +25,10 @@ export default function Contact() {
                             <p className="text-xl text-white/50 font-light max-w-lg">
                                 Whether you have a specific project in mind or just want to explore possibilities, I'm always open to discussing new opportunities.
                             </p>
-                            
+
                             <div className="pt-8 flex flex-col space-y-4">
-                                <a 
-                                    href="mailto:aryadutta840@gmail.com" 
+                                <a
+                                    href="mailto:aryadutta840@gmail.com"
                                     className="inline-flex items-center text-2xl md:text-3xl text-white hover:text-emerald-400 transition-colors group w-max"
                                 >
                                     aryadutta840@gmail.com
@@ -37,20 +37,20 @@ export default function Contact() {
                             </div>
 
                             <div className="pt-16 flex items-center space-x-6">
-                                <a href="https://www.linkedin.com/in/saptarshi-dutta-000174285/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
+                                <a href="https://www.linkedin.com/in/saptarshi-dutta-storytelling/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
                                     <Linkedin className="w-6 h-6" />
                                 </a>
                                 <a href="https://www.instagram.com/fx_zicozzz" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
                                     <Instagram className="w-6 h-6" />
                                 </a>
-                                <a href="https://drive.google.com/file/d/1Dcm47ijFFxhb5pdX9US-aFucEYQKeTD1/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
+                                <a href="https://drive.google.com/file/d/1WCnfTHzVhUnj0y4snRUKRlA_3Bi-PFpT/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
                                     <FileText className="w-6 h-6" />
                                 </a>
                             </div>
                         </div>
 
                         {/* Visual Form Area (Mock) */}
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
@@ -58,27 +58,27 @@ export default function Contact() {
                             className="bg-white/[0.02] border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden backdrop-blur-sm"
                         >
                             <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-[80px] -z-10" />
-                            
+
                             <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
                                 <div className="space-y-2">
                                     <label className="text-sm text-white/50 tracking-wider uppercase font-medium">Name</label>
-                                    <input 
-                                        type="text" 
+                                    <input
+                                        type="text"
                                         className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-white/20 focus:outline-none focus:border-emerald-400/50 focus:bg-white/10 transition-all"
                                         placeholder="John Doe"
                                     />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm text-white/50 tracking-wider uppercase font-medium">Email</label>
-                                    <input 
-                                        type="email" 
+                                    <input
+                                        type="email"
                                         className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-white/20 focus:outline-none focus:border-emerald-400/50 focus:bg-white/10 transition-all"
                                         placeholder="john@example.com"
                                     />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm text-white/50 tracking-wider uppercase font-medium">Message</label>
-                                    <textarea 
+                                    <textarea
                                         rows={4}
                                         className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white placeholder-white/20 focus:outline-none focus:border-emerald-400/50 focus:bg-white/10 transition-all resize-none"
                                         placeholder="Tell me about your project..."

@@ -16,15 +16,20 @@ const SHORT_VIDEOS = Array.from({ length: 23 }, (_, i) => ({
 function VideoCard({ src }: { src: string }) {
     const [isMuted, setIsMuted] = useState(true);
     const videoRef = useRef<HTMLVideoElement>(null);
+    const [isVideoReady, setIsVideoReady] = useState(false);
+    const [shouldLoad, setShouldLoad] = useState(false);
 
-    // Intersection Observer to safely play/pause when in/out of view
+    // Intersection Observer to safely play/pause when in/out of view and lazy load
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (videoRef.current) {
-                    if (entry.isIntersecting) {
+                if (entry.isIntersecting) {
+                    setShouldLoad(true);
+                    if (videoRef.current) {
                         videoRef.current.play().catch(() => {});
-                    } else {
+                    }
+                } else {
+                    if (videoRef.current) {
                         videoRef.current.pause();
                     }
                 }
@@ -51,13 +56,15 @@ function VideoCard({ src }: { src: string }) {
             {/* HTML5 high-performance video rendering */}
             <video 
                 ref={videoRef}
-                src={src}
+                src={shouldLoad ? src : undefined}
+                preload="none"
                 autoPlay 
                 loop 
                 muted={isMuted} 
                 playsInline
                 disablePictureInPicture
-                className="w-full h-full object-cover transition-transform duration-700"
+                onLoadedData={() => setIsVideoReady(true)}
+                className={`w-full h-full object-cover transition-opacity duration-700 ${isVideoReady ? 'opacity-100' : 'opacity-0'}`}
             />
             {/* Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -92,7 +99,7 @@ export default function ShortVideosPage() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-16 text-center md:text-left"
                 >
-                    <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-500">
+                    <h1 className="text-[clamp(2rem,8vw,5rem)] font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-500 break-words">
                         Short-Form Storytelling
                     </h1>
                     <p className="text-xl md:text-2xl text-white/50 max-w-2xl font-light leading-relaxed">
@@ -122,7 +129,7 @@ export default function ShortVideosPage() {
                     className="sticky bottom-8 z-50 flex justify-center mt-12 pointer-events-none"
                 >
                     <Link 
-                        href="https://www.linkedin.com/in/saptarshi-dutta-000174285/"
+                        href="https://www.linkedin.com/in/saptarshi-dutta-storytelling/"
                         target="_blank"
                         className="pointer-events-auto px-8 py-4 rounded-full bg-blue-600 font-bold tracking-widest uppercase text-white hover:bg-blue-500 hover:scale-105 transition-all duration-300 shadow-[0_0_40px_-10px_rgba(37,99,235,0.6)] border border-blue-400/30"
                     >

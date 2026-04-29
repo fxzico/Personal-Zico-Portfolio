@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function StickyLinkedIn() {
     return (
         <a 
-            href="https://www.linkedin.com/in/saptarshi-dutta-000174285/" 
+            href="https://www.linkedin.com/in/saptarshi-dutta-storytelling/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="fixed bottom-6 right-6 z-[100] group flex items-center bg-[#0a66c2] hover:bg-[#004182] text-white px-4 py-3 rounded-full shadow-2xl shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
