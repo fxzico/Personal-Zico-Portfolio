@@ -1,0 +1,38 @@
+🚀 MASTER PROJECT BLUEPRINT: SAPTARSHI'S BRAND & PRODUCTION PORTFOLIO
+
+## PART 1: THE SYSTEM ARCHITECTURE & ENVIRONMENTAL PATHS
+Strictly execute all reads, writes, and terminal builds out of the following local storage layout:
+- Active Git Repository Root: G:\Github Repo\Personal-Zico-Portfolio\sequence (Contains .git, .gitignore, and .gitattributes)
+- Next.js Active App Root: G:\Github Repo\Personal-Zico-Portfolio\sequence\portfolio (Contains package.json, src/, public/, node_modules/)
+- Vercel Production Target: Linked directly to the remote repository branch with the Root Directory explicitly set to portfolio and Framework Preset locked to Next.js.
+
+## PART 2: AGENT OPERATIONAL BEHAVIOR RULES
+- Autopilot Execution Mode: Do not generate implementation_plan.md or step-by-step review logs for routine fixes, metadata adjustments, or code updates. Skip the text planning phase and proceed directly to local file modification.
+- Global Session Persistence: Read from and save your runtime configurations to your session context path (C:\Users\USER\.gemini\antigravity\knowledge\project_path.txt). Never guess or hallucinate the repository pathing.
+- Autonomous Terminal Routine: Every feature introduction must pass local build verification before being flagged as complete. Automatically run:
+  cd "G:\Github Repo\Personal-Zico-Portfolio\sequence\portfolio"
+  npm run build
+
+## PART 3: CORE FEATURAL INVENTORY & CODE OPTIMIZATIONS
+1. Performance Loading Logic (ScrollyCanvas.tsx)
+   - Progressive Asset Loading: The main global loading screen threshold is configured to break/hide as soon as the Hero Background Image and the first 10 frames are fully cached.
+   - Silent Background Fetching: The remaining 90+ animation frames load silently in the background after the DOM is fully visible.
+2. Reels-Style Vertical Media View (/iimc/short-videos)
+   - Lazy Resource Allocation: All video player modules utilize an IntersectionObserver wrapper pattern. Videos only open networking streams, download, and loop when actively moving into the screen viewport.
+   - Media Flags: Every video instance must explicitly force the following native parameters: muted loop playsInline autoPlay.
+3. Typography & Mobile Layout Constraints
+   - Responsive Scaling Engine: Headers must avoid explicit font spacing configurations that cause clipping. Use responsive clamp logic: font-size: clamp(2rem, 8vw, 5rem) combined with structural wrap attributes: overflow-wrap: break-word; word-break: break-word;.
+   - Global Assets Validation: Keep files below GitHub's 100MB limit.
+
+## PART 4: COMPONENT INVENTORY & LINK DIRECTIVES
+- LinkedIn Professional Handle: https://www.linkedin.com/in/saptarshi-dutta-storytelling/ (target="_blank" rel="noopener noreferrer")
+- Latest Academic CV Redirect: https://drive.google.com/file/d/1WCnfTHzVhUnj0y4snRUKRlA_3Bi-PFpT/view?usp=drive_link (target="_blank" rel="noopener noreferrer")
+- Sub-Section Routes:
+  - Category Hub (/): Dark interactive grid system mapping core media clusters.
+  - Case Studies (/case-studies): Premium, light-themed (bg-[#fafaf9]) editorial layout. Minimalist typography, no AI images, cards feature bold serif titles, thin divider rules, and reading-time metadata. (Amazon vs Flipkart, Be a Strategic Advisor: Find a Solution, Failed Brand Positioning, Industry Insights: Ed Tech, Kerala Tourism Case Study, The Fifty Rupee Tea Club).
+
+## PART 5: THE FINAL AUTOMATED GIT ROUTINE
+Stage, commit, and prepare for distribution:
+  cd "G:\Github Repo\Personal-Zico-Portfolio\sequence\portfolio"
+  git add .
+  git commit -m "update: portfolio structural parameters synchronization"

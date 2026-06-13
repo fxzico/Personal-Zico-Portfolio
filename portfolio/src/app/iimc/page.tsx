@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, Video, Mic, Mail, Presentation, FileVideo, LayoutList, Calendar } from "lucide-react";
+import { ArrowLeft, Video, Mic, Mail, Presentation, FileVideo, LayoutList, Calendar, BookOpen } from "lucide-react";
 
 const CATEGORIES = [
     {
@@ -53,6 +53,13 @@ const CATEGORIES = [
         description: "BrandCheck Pro, Catalyst AI & Freelance Projects.",
         icon: <LayoutList className="w-8 h-8 md:w-12 md:h-12" />,
         color: "from-gray-500 to-slate-700"
+    },
+    {
+        title: "Case Studies",
+        href: "/case-studies",
+        description: "In-depth analysis of brand strategy, market positioning, and corporate communication models.",
+        icon: <BookOpen className="w-8 h-8 md:w-12 md:h-12" />,
+        color: "from-rose-500 to-red-600"
     }
 ];
 
