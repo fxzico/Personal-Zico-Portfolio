@@ -43,7 +43,7 @@ export default function Contact() {
                                 <a href="https://www.instagram.com/fx_zicozzz" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
                                     <Instagram className="w-6 h-6" />
                                 </a>
-                                <a href="https://drive.google.com/file/d/1WCnfTHzVhUnj0y4snRUKRlA_3Bi-PFpT/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
+                                <a href="/Saptarshi_Dutta_Resume_2026.pdf" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
                                     <FileText className="w-6 h-6" />
                                 </a>
                             </div>
