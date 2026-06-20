@@ -6,25 +6,27 @@ import Contact from "@/components/Contact";
 import Link from "next/link";
 import { Play, Volume2, VolumeX, ArrowRight, ShieldCheck, Cpu, Layers, ExternalLink } from "lucide-react";
 
-// Local video proof data with custom cover images
 const PROOF_CARDS = [
     {
         title: "City Style Campaign Card",
-        displayTitle: "2.1M Organic Views | Affordable High-Fashion Status Reframe",
+        views: "2.1M Organic Views",
+        sublabel: "Affordable High-Fashion Status Reframe",
         src: "/Home%20page%20Videos/City%20Style.mp4",
         cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.png"
     },
     {
         title: "Cars 24 Sequence Card",
-        displayTitle: "2.0M Combined Views | Dual-Processing Market Communication Funnel",
+        views: "2.0M Combined Views",
+        sublabel: "Dual-Processing Market Communication Funnel",
         src: "/Home%20page%20Videos/Cars%2024.mp4",
         cover: "/Home%20page%20Videos/Cover%20Images/Cars%2024.png"
     },
     {
         title: "Fire Lens [Bolt] Launch Card",
-        displayTitle: "1.1M Views | First-Frame Phonk Retention Vector",
-        src: "/Home%20page%20Videos/Fire%20Lens%20%5BBolt%5D.mp4",
-        cover: "/Home%20page%20Videos/Cover%20Images/Fire%20Lens%20%5BBolt%5D.png"
+        views: "1.1M Views",
+        sublabel: "First-Frame Phonk Retention Vector",
+        src: "/Home%20page%20Videos/Fire%20Lens%20[Bolt].mp4",
+        cover: "/Home%20page%20Videos/Cover%20Images/Fire%20Lens%20[Bolt].png"
     }
 ];
 
@@ -51,7 +53,6 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
                 videoRef.current.play().catch(() => {});
             } else {
                 videoRef.current.pause();
-                videoRef.current.currentTime = 0;
             }
         }
     };
@@ -74,16 +75,17 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onTouchStart={handleTouchStart}
-            className="shimmer-effect group relative w-full max-w-[260px] aspect-[9/16] rounded-2xl overflow-hidden bg-zinc-950 border border-white/10 hover:border-emerald-500/30 transition-all duration-500 shadow-2xl flex flex-col justify-end p-5 mx-auto cursor-pointer"
+            className="shimmer-effect group relative w-full max-w-[260px] aspect-[9/16] rounded-2xl overflow-hidden bg-zinc-950 border border-white/10 hover:border-emerald-500/30 transition-all duration-500 shadow-2xl flex flex-col justify-between p-5 mx-auto cursor-pointer"
         >
             <video
                 ref={videoRef}
                 src={card.src}
                 poster={card.cover}
-                preload="metadata"
+                preload="none"
+                autoPlay={false}
+                muted
                 loop
-                muted={isMuted}
-                playsInline
+                playsInline={true}
                 disablePictureInPicture
                 className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-500 z-0 pointer-events-none"
             />
@@ -99,14 +101,25 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
             </button>
 
             {/* Content Overlay */}
-            <div className="relative z-10 space-y-2">
-                <span className="font-mono text-[9px] text-emerald-400 font-semibold tracking-widest uppercase bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full w-max block">
-                    {card.title}
-                </span>
+            <div className="relative z-10 flex flex-col h-full justify-between w-full pointer-events-none">
+                <div className="pt-2">
+                    <span className="font-mono text-[9px] text-emerald-400 font-semibold tracking-widest uppercase bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full w-max block">
+                        {card.title}
+                    </span>
+                </div>
 
-                <h3 className="text-sm md:text-base font-bold font-serif text-white tracking-tight leading-tight break-words group-hover:text-emerald-400 transition-colors duration-300">
-                    {card.displayTitle}
-                </h3>
+                <div className="flex flex-col space-y-2 mt-auto">
+                    <div className="min-h-[72px] flex items-end">
+                        <h3 className="text-sm md:text-base font-bold font-serif text-white tracking-tight leading-tight break-words group-hover:text-emerald-400 transition-colors duration-300">
+                            {card.sublabel}
+                        </h3>
+                    </div>
+                    <div className="flex items-center pt-2 border-t border-white/10">
+                        <span className="font-mono text-[10px] text-emerald-400/90 font-semibold tracking-widest uppercase">
+                            {card.views}
+                        </span>
+                    </div>
+                </div>
             </div>
         </motion.div>
     );
@@ -276,22 +289,24 @@ export default function BrandLandingPage() {
                         <div className="w-20 h-[2px] bg-emerald-500/30 rounded-full mx-auto" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 font-sans">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 font-sans items-stretch">
                         {/* Phase 1 */}
                         <motion.div
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
-                            className="space-y-6 p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
+                            className="flex flex-col h-full justify-between p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
                         >
-                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                                <Cpu className="w-6 h-6 text-emerald-400" />
+                            <div>
+                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
+                                    <Cpu className="w-6 h-6 text-emerald-400" />
+                                </div>
+                                <h3 className="text-2xl font-bold font-serif text-white min-h-[80px] flex items-center">
+                                    Phase 1: Brand Governance & USP Isolation
+                                </h3>
                             </div>
-                            <h3 className="text-2xl font-bold font-serif text-white">
-                                Phase 1: Brand Governance & USP Isolation
-                            </h3>
-                            <p className="text-zinc-400 font-light leading-relaxed break-words">
+                            <p className="text-zinc-400 font-light leading-relaxed break-words mt-6 flex-grow">
                                 Auditing company briefs, analyzing historic metrics patterns, and mapping past retention/CTR parameters to isolate the singular winning value proposition—hammering it relentlessly until the market builds permanent muscle memory for the brand.
                             </p>
                         </motion.div>
@@ -302,15 +317,17 @@ export default function BrandLandingPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.15 }}
-                            className="space-y-6 p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
+                            className="flex flex-col h-full justify-between p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
                         >
-                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                                <Layers className="w-6 h-6 text-emerald-400" />
+                            <div>
+                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
+                                    <Layers className="w-6 h-6 text-emerald-400" />
+                                </div>
+                                <h3 className="text-2xl font-bold font-serif text-white min-h-[80px] flex items-center">
+                                    Phase 2: Production Multi-Formatting
+                                </h3>
                             </div>
-                            <h3 className="text-2xl font-bold font-serif text-white">
-                                Phase 2: Production Multi-Formatting
-                            </h3>
-                            <p className="text-zinc-400 font-light leading-relaxed break-words">
+                            <p className="text-zinc-400 font-light leading-relaxed break-words mt-6 flex-grow">
                                 Maximizing asset value and development speed by building synchronized multi-platform structures (capturing 16:9 master angles alongside high-fidelity iPhone BTS frames) to feed distinct channels simultaneously.
                             </p>
                         </motion.div>
@@ -321,15 +338,17 @@ export default function BrandLandingPage() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.3 }}
-                            className="space-y-6 p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
+                            className="flex flex-col h-full justify-between p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
                         >
-                            <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                                <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                            <div>
+                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
+                                    <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                                </div>
+                                <h3 className="text-2xl font-bold font-serif text-white min-h-[80px] flex items-center">
+                                    Phase 3: Meta-Distribution & Risk Mitigation
+                                </h3>
                             </div>
-                            <h3 className="text-2xl font-bold font-serif text-white">
-                                Phase 3: Meta-Distribution & Risk Mitigation
-                            </h3>
-                            <p className="text-zinc-400 font-light leading-relaxed break-words">
+                            <p className="text-zinc-400 font-light leading-relaxed break-words mt-6 flex-grow">
                                 Scripting cultural trends to perfectly wrap around a brand's unique identity guidelines, allowing fast algorithmic distribution capture while safeguarding corporate equity and preventing institutional controversy.
                             </p>
                         </motion.div>
