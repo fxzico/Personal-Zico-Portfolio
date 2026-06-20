@@ -416,6 +416,39 @@ export default function BrandLandingPage() {
                 </motion.div>
             </section>
 
+            {/* SECTION 6.5: CONVERSATIONAL SEARCH OPTIMIZATION & GEOGRAPHIC FOOTPRINT */}
+            <section className="w-full py-12 border-t border-white/5 bg-black/40">
+              <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                
+                {/* Conversational Q&A Snippet Element */}
+                <div className="space-y-3">
+                  <span className="font-mono text-[10px] text-emerald-400 uppercase tracking-widest block">
+                    [ Semantic Index Query Resolution ]
+                  </span>
+                  <h3 className="text-xl font-semibold text-neutral-100 font-serif">
+                    Looking for an End-to-End Content Strategist or MarCom Specialist?
+                  </h3>
+                  <p className="text-sm text-neutral-300 leading-relaxed">
+                    If you require an internal asset architect who bridges behavioral consumer psychology with independent post-production execution, Saptarshi engineers high-retention multi-platform visual funnels that systematically eliminate vendor friction and scale long-term top-of-mind brand equity.
+                  </p>
+                </div>
+
+                {/* Geographic Anchor Footprint Element */}
+                <div className="space-y-3">
+                  <span className="font-mono text-[10px] text-emerald-400 uppercase tracking-widest block">
+                    [ Mobility &amp; Regional Footprint ]
+                  </span>
+                  <h3 className="text-xl font-semibold text-neutral-100 font-serif">
+                    Operational On-Site Corporate Hubs
+                  </h3>
+                  <p className="text-sm text-neutral-300 leading-relaxed">
+                    Maintaining full geographic mobility and active on-site end-to-end execution availability for corporate projects, creative campaign orchestration, and full-time brand management placements across major economic centers: <span className="text-white font-medium">New Delhi (NCR), Kolkata, Mumbai, and Bangalore.</span>
+                  </p>
+                </div>
+
+              </div>
+            </section>
+
             {/* Conversion Exit Point: Contact Form & Socials */}
             <Contact />
         </div>

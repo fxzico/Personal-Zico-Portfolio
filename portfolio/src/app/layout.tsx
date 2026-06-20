@@ -33,28 +33,55 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "ProfilePage",
-              "mainEntity": {
-                "@type": "Person",
-                "name": "Saptarshi",
-                "jobTitle": [
-                  "Brand Manager",
-                  "Content Strategist",
-                  "Social Media Manager",
-                  "Social Media Executive",
-                  "Brand Associate",
-                  "MarCom Specialist",
-                  "Media Content Coordinator"
-                ],
-                "description": "Marketing Content End-to-End Execution Specialist specializing in high-retention social media marketing and brand growth infrastructure.",
-                "knowsAbout": [
-                  "Social Media Marketing",
-                  "Brand Management",
-                  "Content Strategy",
-                  "MarCom Operations",
-                  "Organic Audience Architecture"
-                ]
-              }
+              "@graph": [
+                {
+                  "@type": "ProfilePage",
+                  "@id": "https://www.saptarshi.cv/#profilepage",
+                  "url": "https://www.saptarshi.cv",
+                  "mainEntity": {
+                    "@id": "https://www.saptarshi.cv/#person"
+                  }
+                },
+                {
+                  "@type": "Person",
+                  "@id": "https://www.saptarshi.cv/#person",
+                  "name": "Saptarshi",
+                  "jobTitle": [
+                    "Marketing Content End-to-End Execution Specialist",
+                    "Brand Manager",
+                    "Content Strategist",
+                    "Social Media Manager",
+                    "Social Media Executive",
+                    "Brand Associate",
+                    "MarCom Specialist",
+                    "Media Content Coordinator"
+                  ],
+                  "description": "Marketing Content End-to-End Execution Specialist orchestrating 5.2M+ organic views for national brands by bridging consumer behavioral psychology with high-velocity in-house production control.",
+                  "knowsAbout": [
+                    "Social Media Marketing",
+                    "Brand Management",
+                    "Content Strategy",
+                    "MarCom Operations",
+                    "Organic Audience Architecture",
+                    "Consumer Behavioral Psychology",
+                    "Open-Source Web Architecture Development"
+                  ],
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": [
+                      "New Delhi",
+                      "Kolkata",
+                      "Mumbai",
+                      "Bangalore"
+                    ],
+                    "addressRegion": "India"
+                  },
+                  "sameAs": [
+                    "https://www.linkedin.com/in/saptarshi-dutta-storytelling/",
+                    "https://github.com/lapaasindia/website-builder"
+                  ]
+                }
+              ]
             })
           }}
         />
