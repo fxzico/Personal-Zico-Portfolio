@@ -31,29 +31,30 @@ const PROOF_CARDS = [
 function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: number }) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isMuted, setIsMuted] = useState(true);
-    const [isVideoReady, setIsVideoReady] = useState(false);
-    const [shouldLoad, setShouldLoad] = useState(false);
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setShouldLoad(true);
-                    if (videoRef.current) {
-                        videoRef.current.play().catch(() => {});
-                    }
-                } else {
-                    if (videoRef.current) {
-                        videoRef.current.pause();
-                    }
-                }
-            },
-            { threshold: 0.2 }
-        );
+    const handleMouseEnter = () => {
+        if (videoRef.current) {
+            videoRef.current.play().catch(() => {});
+        }
+    };
 
-        if (videoRef.current) observer.observe(videoRef.current);
-        return () => observer.disconnect();
-    }, []);
+    const handleMouseLeave = () => {
+        if (videoRef.current) {
+            videoRef.current.pause();
+            videoRef.current.currentTime = 0;
+        }
+    };
+
+    const handleTouchStart = () => {
+        if (videoRef.current) {
+            if (videoRef.current.paused) {
+                videoRef.current.play().catch(() => {});
+            } else {
+                videoRef.current.pause();
+                videoRef.current.currentTime = 0;
+            }
+        }
+    };
 
     const toggleMute = (e: React.MouseEvent) => {
         e.preventDefault();
@@ -70,20 +71,21 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: idx * 0.15, duration: 0.6 }}
-            className="shimmer-effect group relative w-full aspect-[10/16] rounded-3xl overflow-hidden bg-zinc-950 border border-white/10 hover:border-emerald-500/30 transition-all duration-500 shadow-2xl flex flex-col justify-end p-6 md:p-8"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            className="shimmer-effect group relative w-full max-w-[260px] aspect-[9/16] rounded-2xl overflow-hidden bg-zinc-950 border border-white/10 hover:border-emerald-500/30 transition-all duration-500 shadow-2xl flex flex-col justify-end p-5 mx-auto cursor-pointer"
         >
             <video
                 ref={videoRef}
-                src={shouldLoad ? card.src : undefined}
+                src={card.src}
                 poster={card.cover}
                 preload="metadata"
-                autoPlay
                 loop
                 muted={isMuted}
                 playsInline
                 disablePictureInPicture
-                onLoadedData={() => setIsVideoReady(true)}
-                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-75 transition-opacity duration-500 z-0 pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-500 z-0 pointer-events-none"
             />
             {/* Dark Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-zinc-950/20 z-0 transition-opacity duration-500 pointer-events-none" />
@@ -91,18 +93,18 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
             {/* Mute button on top-right */}
             <button
                 onClick={toggleMute}
-                className="absolute top-6 right-6 z-20 p-3 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white transition-all hover:scale-105"
+                className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white transition-all hover:scale-105"
             >
-                {isMuted ? <VolumeX className="w-4 h-4 text-white/70" /> : <Volume2 className="w-4 h-4 text-emerald-400" />}
+                {isMuted ? <VolumeX className="w-3.5 h-3.5 text-white/70" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
             </button>
 
             {/* Content Overlay */}
-            <div className="relative z-10 space-y-4">
-                <span className="font-mono text-xs text-emerald-400 font-semibold tracking-widest uppercase bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full w-max block">
+            <div className="relative z-10 space-y-2">
+                <span className="font-mono text-[9px] text-emerald-400 font-semibold tracking-widest uppercase bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full w-max block">
                     {card.title}
                 </span>
 
-                <h3 className="text-2xl md:text-3xl font-bold font-serif text-white tracking-tight leading-tight break-words group-hover:text-emerald-400 transition-colors duration-300">
+                <h3 className="text-sm md:text-base font-bold font-serif text-white tracking-tight leading-tight break-words group-hover:text-emerald-400 transition-colors duration-300">
                     {card.displayTitle}
                 </h3>
             </div>
@@ -151,7 +153,7 @@ export default function BrandLandingPage() {
             `}</style>
 
             {/* Section 1: Above-the-Fold Header */}
-            <section id="top" className="relative min-h-[85vh] flex flex-col justify-center items-center px-8 pt-32 pb-8">
+            <section id="top" className="relative min-h-[75vh] flex flex-col justify-center items-center px-8 pt-32 pb-8">
                 <div className="max-w-6xl mx-auto text-center space-y-8 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
@@ -187,49 +189,49 @@ export default function BrandLandingPage() {
                 <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
             </section>
 
-            {/* Section 2: Aligned Metrics + Videos Grid */}
-            <section id="projects" className="py-24 px-8 max-w-7xl mx-auto">
+            {/* Section 2: The 3-Column Analytics Row */}
+            <section id="metrics" className="px-8 max-w-5xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs tracking-wider"
+                >
+                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
+                        <span className="text-zinc-500">REACH</span>
+                        <span className="text-emerald-400 font-bold">5.2M+ Organic Reach Orchestrated</span>
+                    </div>
+                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
+                        <span className="text-zinc-500">PIPELINE</span>
+                        <span className="text-emerald-400 font-bold">100% In-House Pipeline Control</span>
+                    </div>
+                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
+                        <span className="text-zinc-500">EXECUTION</span>
+                        <span className="text-emerald-400 font-bold">Zero Campaign Friction</span>
+                    </div>
+                </motion.div>
+            </section>
+
+            {/* Section 3: The 3 Aligned Video Cards Grid */}
+            <section id="projects" className="py-20 px-8 max-w-6xl mx-auto">
                 <div className="space-y-16">
-                    <div className="text-center md:text-left space-y-4">
+                    <div className="text-center space-y-4">
                         <span className="font-mono text-xs tracking-widest text-emerald-400 uppercase font-semibold">
                             PROOF OF PERFORMANCE
                         </span>
-                        <h2 className="text-4xl md:text-6xl font-serif font-light tracking-tight text-white">
+                        <h2 className="text-4xl md:text-5xl font-serif font-light tracking-tight text-white">
                             Viral Campaign Showcase
                         </h2>
-                        <div className="w-20 h-[2px] bg-emerald-500/30 rounded-full" />
+                        <div className="w-20 h-[2px] bg-emerald-500/30 rounded-full mx-auto" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Column 1 (Reach Pillar) */}
-                        <div className="flex flex-col space-y-6">
-                            <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300 font-mono text-xs tracking-wider">
-                                <span className="text-zinc-500">REACH</span>
-                                <span className="text-emerald-400 font-bold">5.2M+ Organic Reach Orchestrated</span>
-                            </div>
-                            <VideoProofCard card={PROOF_CARDS[0]} idx={0} />
-                        </div>
-
-                        {/* Column 2 (Pipeline Pillar) */}
-                        <div className="flex flex-col space-y-6">
-                            <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300 font-mono text-xs tracking-wider">
-                                <span className="text-zinc-500">PIPELINE</span>
-                                <span className="text-emerald-400 font-bold">100% In-House Pipeline Control</span>
-                            </div>
-                            <VideoProofCard card={PROOF_CARDS[1]} idx={1} />
-                        </div>
-
-                        {/* Column 3 (Execution Pillar) */}
-                        <div className="flex flex-col space-y-6">
-                            <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300 font-mono text-xs tracking-wider">
-                                <span className="text-zinc-500">EXECUTION</span>
-                                <span className="text-emerald-400 font-bold">Zero Campaign Friction</span>
-                            </div>
-                            <VideoProofCard card={PROOF_CARDS[2]} idx={2} />
-                        </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+                        {PROOF_CARDS.map((card, i) => (
+                            <VideoProofCard key={i} card={card} idx={i} />
+                        ))}
                     </div>
 
-                    {/* Section 3: Archive Gateway Component */}
+                    {/* Section 4: Video Production Archive button */}
                     <div className="flex justify-center pt-8">
                         <motion.div
                             whileHover={{ scale: 1.03 }}
@@ -249,7 +251,7 @@ export default function BrandLandingPage() {
                 </div>
             </section>
 
-            {/* Section 4: 7-Touchpoints Behavioral Hook Component */}
+            {/* Section 5: The 7-Touchpoints Behavioral Hook Component */}
             <section id="about" className="py-32 px-8 border-y border-white/5 bg-zinc-950/30 relative">
                 <div className="max-w-4xl mx-auto text-center relative z-10">
                     <div className="inline-block p-1 px-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 font-mono text-xs tracking-widest uppercase mb-8">
@@ -261,7 +263,7 @@ export default function BrandLandingPage() {
                 </div>
             </section>
 
-            {/* Section 5: Single-USP Retention Pipeline Framework */}
+            {/* Section 6: The Single-USP Retention Pipeline Framework */}
             <section id="experience" className="py-32 px-8 border-t border-white/5 bg-zinc-950/20">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
@@ -335,7 +337,7 @@ export default function BrandLandingPage() {
                 </div>
             </section>
 
-            {/* Section 6: Institutional Vault Redirect Banner */}
+            {/* Section 7: Institutional Vault Redirect Banner */}
             <section id="vault" className="py-24 px-8 max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.98 }}
