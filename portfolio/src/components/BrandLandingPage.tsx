@@ -6,25 +6,25 @@ import Contact from "@/components/Contact";
 import Link from "next/link";
 import { Play, Volume2, VolumeX, ArrowRight, ShieldCheck, Cpu, Layers, ExternalLink } from "lucide-react";
 
-// Video proof data
+// Local video proof data with custom cover images
 const PROOF_CARDS = [
     {
-        title: "City Style Campaign",
-        metric: "2.1M Organic Views",
-        hook: "Affordable High-Fashion Status Reframe",
-        src: "/Short Video Section for IIMC/9.mp4"
+        title: "City Style Campaign Card",
+        displayTitle: "2.1M Organic Views | Affordable High-Fashion Status Reframe",
+        src: "/Home%20page%20Videos/City%20Style.mp4",
+        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.png"
     },
     {
-        title: "Cars24 Buying & Selling Sequences",
-        metric: "2.0M Combined Views",
-        hook: "Dual-Processing Market Communication Funnel",
-        src: "/Short Video Section for IIMC/12.mp4"
+        title: "Cars 24 Sequence Card",
+        displayTitle: "2.0M Combined Views | Dual-Processing Market Communication Funnel",
+        src: "/Home%20page%20Videos/Cars%2024.mp4",
+        cover: "/Home%20page%20Videos/Cover%20Images/Cars%2024.png"
     },
     {
-        title: "Bolt Glasses Product Launch",
-        metric: "1.1M Views",
-        hook: "First-Frame Phonk Retention Vector",
-        src: "/Short Video Section for IIMC/18.mp4"
+        title: "Fire Lens [Bolt] Launch Card",
+        displayTitle: "1.1M Views | First-Frame Phonk Retention Vector",
+        src: "/Home%20page%20Videos/Fire%20Lens%20%5BBolt%5D.mp4",
+        cover: "/Home%20page%20Videos/Cover%20Images/Fire%20Lens%20%5BBolt%5D.png"
     }
 ];
 
@@ -75,14 +75,15 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
             <video
                 ref={videoRef}
                 src={shouldLoad ? card.src : undefined}
-                preload="none"
+                poster={card.cover}
+                preload="metadata"
                 autoPlay
                 loop
                 muted={isMuted}
                 playsInline
                 disablePictureInPicture
                 onLoadedData={() => setIsVideoReady(true)}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 pointer-events-none z-0 ${isVideoReady ? 'opacity-50 group-hover:opacity-75' : 'opacity-0'}`}
+                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-75 transition-opacity duration-500 z-0 pointer-events-none"
             />
             {/* Dark Overlay Gradient */}
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-zinc-950/20 z-0 transition-opacity duration-500 pointer-events-none" />
@@ -98,16 +99,12 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
             {/* Content Overlay */}
             <div className="relative z-10 space-y-4">
                 <span className="font-mono text-xs text-emerald-400 font-semibold tracking-widest uppercase bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full w-max block">
-                    {card.metric}
+                    {card.title}
                 </span>
 
-                <h3 className="text-2xl md:text-3xl font-bold font-serif text-white tracking-tight leading-tight break-words">
-                    {card.title}
+                <h3 className="text-2xl md:text-3xl font-bold font-serif text-white tracking-tight leading-tight break-words group-hover:text-emerald-400 transition-colors duration-300">
+                    {card.displayTitle}
                 </h3>
-
-                <p className="text-sm md:text-base text-zinc-400 font-light leading-relaxed group-hover:text-white transition-colors duration-300 break-words">
-                    {card.hook}
-                </p>
             </div>
         </motion.div>
     );
