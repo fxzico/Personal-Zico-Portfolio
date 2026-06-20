@@ -27,6 +27,38 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfilePage",
+              "mainEntity": {
+                "@type": "Person",
+                "name": "Saptarshi",
+                "jobTitle": [
+                  "Brand Manager",
+                  "Content Strategist",
+                  "Social Media Manager",
+                  "Social Media Executive",
+                  "Brand Associate",
+                  "MarCom Specialist",
+                  "Media Content Coordinator"
+                ],
+                "description": "Marketing Content End-to-End Execution Specialist specializing in high-retention social media marketing and brand growth infrastructure.",
+                "knowsAbout": [
+                  "Social Media Marketing",
+                  "Brand Management",
+                  "Content Strategy",
+                  "MarCom Operations",
+                  "Organic Audience Architecture"
+                ]
+              }
+            })
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

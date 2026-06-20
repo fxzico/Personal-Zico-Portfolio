@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Lightbulb, Target, Users, Zap } from "lucide-react";
+import { Lightbulb, Target, Users, Zap, ExternalLink, Code2 } from "lucide-react";
 
 export default function About() {
     const features = [
@@ -24,6 +24,12 @@ export default function About() {
             icon: <Zap className="w-8 h-8 text-emerald-400" />,
             title: "GenAI Creative Tools",
             description: "Leveraging cutting-edge AI technologies to elevate and expedite creative pipelines."
+        },
+        {
+            icon: <Code2 className="w-8 h-8 text-emerald-400" />,
+            title: "Open-Source Web Architecture Development",
+            description: "Designing modular page rendering logic and developing custom website-engine infrastructure.",
+            link: "https://github.com/lapaasindia/website-builder"
         }
     ];
 
@@ -54,24 +60,48 @@ export default function About() {
                         </div>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {features.map((feature, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, scale: 0.9 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                                    className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] transition-colors"
-                                >
-                                    <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-6">
-                                        {feature.icon}
-                                    </div>
-                                    <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                                    <p className="text-white/60 text-sm leading-relaxed">
-                                        {feature.description}
-                                    </p>
-                                </motion.div>
-                            ))}
+                            {features.map((feature, i) => {
+                                const CardContent = (
+                                    <>
+                                        <div className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center mb-6">
+                                            {feature.icon}
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-3 flex items-center gap-2 group-hover:text-emerald-400 transition-colors">
+                                            {feature.title}
+                                            {feature.link && (
+                                                <ExternalLink className="w-4 h-4 text-emerald-400 opacity-50 group-hover:opacity-100 transition-all" />
+                                            )}
+                                        </h3>
+                                        <p className="text-white/60 text-sm leading-relaxed">
+                                            {feature.description}
+                                        </p>
+                                    </>
+                                );
+
+                                return (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5, delay: i * 0.1 }}
+                                        className="group p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:bg-white/[0.05] hover:border-emerald-500/20 transition-all duration-300"
+                                    >
+                                        {feature.link ? (
+                                            <a
+                                                href={feature.link}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="block w-full h-full cursor-pointer"
+                                            >
+                                                {CardContent}
+                                            </a>
+                                        ) : (
+                                            <div>{CardContent}</div>
+                                        )}
+                                    </motion.div>
+                                );
+                            })}
                         </div>
                     </div>
                 </motion.div>

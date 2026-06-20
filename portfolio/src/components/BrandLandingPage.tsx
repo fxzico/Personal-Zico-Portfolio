@@ -12,7 +12,7 @@ const PROOF_CARDS = [
         views: "2.1M Organic Views",
         sublabel: "Affordable High-Fashion Status Reframe",
         src: "/Home%20page%20Videos/City%20Style.mp4",
-        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.jpg"
+        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.png"
     },
     {
         title: "Cars 24 Sequence Card",

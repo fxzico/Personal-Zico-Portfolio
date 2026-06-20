@@ -2,8 +2,9 @@ import BrandLandingPage from "@/components/BrandLandingPage";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Saptarshi Dutta | End-to-End Content Strategy & Organic Growth Specialist',
-  description: 'Portfolio of Saptarshi Dutta - Marketing Content End-to-End Execution Specialist. Orchestrating 5.2M+ organic views for national brands by bridging consumer behavioral psychology with high-velocity internal production.',
+  title: "Saptarshi | Brand Manager & Full-Stack Content Strategist Portfolio",
+  description: "Portfolio of Saptarshi, a Marketing Content End-to-End Execution Specialist. Expert in Brand Management, Organic Growth, Social Media Architecture, and MarCom strategy orchestration generating 5.2M+ organic reach.",
+  keywords: ["Social Media Executive", "Social Media Manager", "Brand Associates", "Brand Manager", "Content Strategist", "MarCom", "Media Content Coordinator", "Social Media Marketing", "Organic Growth Architect"]
 }
 
 export default function Home() {
