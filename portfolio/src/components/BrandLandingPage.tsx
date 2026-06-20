@@ -151,7 +151,7 @@ export default function BrandLandingPage() {
             `}</style>
 
             {/* Section 1: Above-the-Fold Header */}
-            <section id="top" className="relative min-h-[90vh] flex flex-col justify-center items-center px-8 pt-32 pb-16">
+            <section id="top" className="relative min-h-[85vh] flex flex-col justify-center items-center px-8 pt-32 pb-8">
                 <div className="max-w-6xl mx-auto text-center space-y-8 relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: -20 }}
@@ -180,27 +180,6 @@ export default function BrandLandingPage() {
                     >
                         Orchestrating 5.2M+ organic views for national brands by bridging consumer behavioral psychology with high-velocity internal production.
                     </motion.p>
-
-                    {/* Section 2: Metric Counters */}
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.3 }}
-                        className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto pt-12 font-mono text-xs tracking-wider"
-                    >
-                        <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
-                            <span className="text-zinc-500">REACH</span>
-                            <span className="text-emerald-400 font-bold">5.2M+ Organic Reach Orchestrated</span>
-                        </div>
-                        <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
-                            <span className="text-zinc-500">PIPELINE</span>
-                            <span className="text-emerald-400 font-bold">100% In-House Pipeline Control</span>
-                        </div>
-                        <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
-                            <span className="text-zinc-500">EXECUTION</span>
-                            <span className="text-emerald-400 font-bold">Zero Campaign Friction</span>
-                        </div>
-                    </motion.div>
                 </div>
 
                 {/* Background Ambient Glows */}
@@ -208,20 +187,8 @@ export default function BrandLandingPage() {
                 <div className="absolute bottom-10 left-10 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] -z-10 pointer-events-none" />
             </section>
 
-            {/* Section 3: 7-Touchpoints Behavioral Hook */}
-            <section id="about" className="py-32 px-8 border-y border-white/5 bg-zinc-950/30 relative">
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                    <div className="inline-block p-1 px-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 font-mono text-xs tracking-widest uppercase mb-8">
-                        Behavioral Psychology
-                    </div>
-                    <p className="text-2xl md:text-4xl font-serif font-light tracking-tight leading-relaxed text-zinc-100 break-words">
-                        "According to consumer psychology, it takes <span className="text-emerald-400 font-normal">7 unique touchpoints</span> to turn a stranger into a brand advocate. This portfolio home page is <span className="underline decoration-emerald-400 underline-offset-8">Touchpoint #1</span>. Hire me to build and execute the other 6 for your brand."
-                    </p>
-                </div>
-            </section>
-
-            {/* Section 4: 3 Core Video Proof Blocks */}
-            <section id="projects" className="py-32 px-8 max-w-7xl mx-auto">
+            {/* Section 2: Aligned Metrics + Videos Grid */}
+            <section id="projects" className="py-24 px-8 max-w-7xl mx-auto">
                 <div className="space-y-16">
                     <div className="text-center md:text-left space-y-4">
                         <span className="font-mono text-xs tracking-widest text-emerald-400 uppercase font-semibold">
@@ -234,28 +201,63 @@ export default function BrandLandingPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {PROOF_CARDS.map((card, i) => (
-                            <VideoProofCard key={i} card={card} idx={i} />
-                        ))}
+                        {/* Column 1 (Reach Pillar) */}
+                        <div className="flex flex-col space-y-6">
+                            <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300 font-mono text-xs tracking-wider">
+                                <span className="text-zinc-500">REACH</span>
+                                <span className="text-emerald-400 font-bold">5.2M+ Organic Reach Orchestrated</span>
+                            </div>
+                            <VideoProofCard card={PROOF_CARDS[0]} idx={0} />
+                        </div>
+
+                        {/* Column 2 (Pipeline Pillar) */}
+                        <div className="flex flex-col space-y-6">
+                            <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300 font-mono text-xs tracking-wider">
+                                <span className="text-zinc-500">PIPELINE</span>
+                                <span className="text-emerald-400 font-bold">100% In-House Pipeline Control</span>
+                            </div>
+                            <VideoProofCard card={PROOF_CARDS[1]} idx={1} />
+                        </div>
+
+                        {/* Column 3 (Execution Pillar) */}
+                        <div className="flex flex-col space-y-6">
+                            <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300 font-mono text-xs tracking-wider">
+                                <span className="text-zinc-500">EXECUTION</span>
+                                <span className="text-emerald-400 font-bold">Zero Campaign Friction</span>
+                            </div>
+                            <VideoProofCard card={PROOF_CARDS[2]} idx={2} />
+                        </div>
                     </div>
 
-                    {/* Master Video Production Archive button */}
+                    {/* Section 3: Archive Gateway Component */}
                     <div className="flex justify-center pt-8">
                         <motion.div
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.98 }}
                         >
                             <a
-                                href="https://drive.google.com/drive/folders/1OPDtkL83IzvtOIdej_RM4R7BnKG-QrCL?usp=sharing"
+                                href="https://drive.google.com/drive/folders/1nk8QV86Krsm3N5MAEVgKC9ii6GE6PwHJ?usp=drive_link"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center px-8 py-5 border border-white/10 hover:border-emerald-500/30 rounded-full font-mono text-sm tracking-wider uppercase text-zinc-300 hover:text-white bg-zinc-950/50 hover:bg-zinc-950 transition-all duration-300"
+                                className="inline-flex items-center px-8 py-5 border border-white/10 hover:border-emerald-500/30 rounded-full font-mono text-sm tracking-wider uppercase text-zinc-300 hover:text-white bg-zinc-950/50 hover:bg-zinc-950 transition-all duration-300 shadow-xl"
                             >
-                                [ Access Master Video Production Archive ]
+                                [ ACCESS VIDEO PRODUCTION ARCHIVE ]
                                 <ExternalLink className="w-4 h-4 ml-3 text-emerald-400" />
                             </a>
                         </motion.div>
                     </div>
+                </div>
+            </section>
+
+            {/* Section 4: 7-Touchpoints Behavioral Hook Component */}
+            <section id="about" className="py-32 px-8 border-y border-white/5 bg-zinc-950/30 relative">
+                <div className="max-w-4xl mx-auto text-center relative z-10">
+                    <div className="inline-block p-1 px-3 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-emerald-400 font-mono text-xs tracking-widest uppercase mb-8">
+                        Behavioral Psychology
+                    </div>
+                    <p className="text-2xl md:text-4xl font-serif font-light tracking-tight leading-relaxed text-zinc-100 break-words">
+                        "According to consumer psychology, it takes <span className="text-emerald-400 font-normal">7 unique touchpoints</span> to turn a stranger into a brand advocate. This portfolio home page is <span className="underline decoration-emerald-400 underline-offset-8">Touchpoint #1</span>. Hire me to build and execute the other 6 for your brand."
+                    </p>
                 </div>
             </section>
 
