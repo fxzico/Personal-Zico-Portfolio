@@ -1,23 +1,13 @@
-import ClientHero from "@/components/ClientHero";
-import About from "@/components/About";
-import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
+import BrandLandingPage from "@/components/BrandLandingPage";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Saptarshi | Content Strategist',
-  description: 'Portfolio of Saptarshi - Content Strategist bridging storytelling with technology.',
+  title: 'Saptarshi Dutta | End-to-End Content Strategy & Organic Growth Specialist',
+  description: 'Portfolio of Saptarshi Dutta - Marketing Content End-to-End Execution Specialist. Orchestrating 5.2M+ organic views for national brands by bridging consumer behavioral psychology with high-velocity internal production.',
 }
 
 export default function Home() {
   return (
-    <main className="bg-[#121212] min-h-screen text-white">
-      <ClientHero />
-      <About />
-      <Experience />
-      <Projects />
-      <Contact />
-    </main>
+    <BrandLandingPage />
   );
 }
