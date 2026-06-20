@@ -12,7 +12,7 @@ const PROOF_CARDS = [
         views: "2.1M Organic Views",
         sublabel: "Affordable High-Fashion Status Reframe",
         src: "/Home%20page%20Videos/City%20Style.mp4",
-        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.png"
+        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.jpg"
     },
     {
         title: "Cars 24 Sequence Card",
@@ -180,7 +180,7 @@ export default function BrandLandingPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <span className="font-mono text-xs md:text-sm tracking-[0.3em] uppercase text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20 px-4 py-2 rounded-full">
+                        <span className="font-mono text-[10px] sm:text-xs tracking-wider uppercase text-emerald-400 font-bold bg-emerald-500/10 border border-emerald-500/20 px-3 py-1.5 rounded-full h-auto leading-normal inline-block text-center">
                             Marketing Content End-to-End Execution Specialist
                         </span>
                     </motion.div>
@@ -217,15 +217,15 @@ export default function BrandLandingPage() {
                     transition={{ duration: 1, delay: 0.3 }}
                     className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs tracking-wider"
                 >
-                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
+                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl flex flex-col items-start gap-1 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 group hover:border-emerald-500/20 transition-all duration-300">
                         <span className="text-zinc-500">REACH</span>
                         <span className="text-emerald-400 font-bold">5.2M+ Organic Reach Orchestrated</span>
                     </div>
-                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
+                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl flex flex-col items-start gap-1 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 group hover:border-emerald-500/20 transition-all duration-300">
                         <span className="text-zinc-500">PIPELINE</span>
                         <span className="text-emerald-400 font-bold">100% In-House Pipeline Control</span>
                     </div>
-                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl px-6 py-4 flex items-center justify-between group hover:border-emerald-500/20 transition-all duration-300">
+                    <div className="border border-white/5 bg-zinc-950/40 rounded-2xl flex flex-col items-start gap-1 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 group hover:border-emerald-500/20 transition-all duration-300">
                         <span className="text-zinc-500">EXECUTION</span>
                         <span className="text-emerald-400 font-bold">Zero Campaign Friction</span>
                     </div>
