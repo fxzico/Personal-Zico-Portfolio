@@ -12,21 +12,21 @@ const PROOF_CARDS = [
         views: "2.1M Organic Views",
         sublabel: "Affordable High-Fashion Status Reframe",
         src: "/Home%20page%20Videos/City%20Style.mp4",
-        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.jpg"
+        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.webp"
     },
     {
         title: "Cars 24 Sequence Card",
         views: "2.0M Combined Views",
         sublabel: "Dual-Processing Market Communication Funnel",
         src: "/Home%20page%20Videos/Cars%2024.mp4",
-        cover: "/Home%20page%20Videos/Cover%20Images/Cars%2024.png"
+        cover: "/Home%20page%20Videos/Cover%20Images/Cars%2024.webp"
     },
     {
         title: "Fire Lens [Bolt] Launch Card",
         views: "1.1M Views",
         sublabel: "First-Frame Phonk Retention Vector",
         src: "/Home%20page%20Videos/Fire%20Lens%20[Bolt].mp4",
-        cover: "/Home%20page%20Videos/Cover%20Images/Fire%20Lens%20[Bolt].png"
+        cover: "/Home%20page%20Videos/Cover%20Images/Fire%20Lens%20[Bolt].webp"
     }
 ];
 

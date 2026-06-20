@@ -109,6 +109,7 @@ export default function Contact() {
                                         <select
                                             className="w-full bg-zinc-900 border border-white/10 rounded-xl px-4 py-4 pr-10 text-white focus:outline-none focus:border-emerald-400/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
                                             defaultValue=""
+                                            aria-label="Select your primary brand campaign bottleneck"
                                         >
                                             <option value="" disabled className="text-white/40">Select your operational bottleneck...</option>
                                             <option value="A" className="text-white bg-zinc-950">Our agency fees are too high / Need 100% In-House Pipeline Control</option>
