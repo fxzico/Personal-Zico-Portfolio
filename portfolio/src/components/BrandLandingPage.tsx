@@ -12,7 +12,7 @@ const PROOF_CARDS = [
         views: "2.1M Organic Views",
         sublabel: "Affordable High-Fashion Status Reframe",
         src: "/Home%20page%20Videos/City%20Style.mp4",
-        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.png"
+        cover: "/Home%20page%20Videos/Cover%20Images/City%20Style.jpg"
     },
     {
         title: "Cars 24 Sequence Card",
@@ -33,14 +33,17 @@ const PROOF_CARDS = [
 function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: number }) {
     const videoRef = useRef<HTMLVideoElement>(null);
     const [isMuted, setIsMuted] = useState(true);
+    const [isActive, setIsActive] = useState(false);
 
     const handleMouseEnter = () => {
+        setIsActive(true);
         if (videoRef.current) {
             videoRef.current.play().catch(() => {});
         }
     };
 
     const handleMouseLeave = () => {
+        setIsActive(false);
         if (videoRef.current) {
             videoRef.current.pause();
             videoRef.current.currentTime = 0;
@@ -51,8 +54,10 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
         if (videoRef.current) {
             if (videoRef.current.paused) {
                 videoRef.current.play().catch(() => {});
+                setIsActive(true);
             } else {
                 videoRef.current.pause();
+                setIsActive(false);
             }
         }
     };
@@ -101,7 +106,9 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
             </button>
 
             {/* Content Overlay */}
-            <div className="relative z-10 flex flex-col h-full justify-between w-full pointer-events-none">
+            <div className={`relative z-10 flex flex-col h-full justify-between w-full pointer-events-none transition-all duration-300 ease-out opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto ${
+                isActive ? "opacity-100 translate-y-0 pointer-events-auto" : ""
+            }`}>
                 <div className="pt-2">
                     <span className="font-mono text-[9px] text-emerald-400 font-semibold tracking-widest uppercase bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full w-max block">
                         {card.title}
@@ -276,7 +283,7 @@ export default function BrandLandingPage() {
                 </div>
             </section>
 
-            {/* Section 6: The Single-USP Retention Pipeline Framework */}
+            {/* Section 6: Strategic Execution Flowchart Conversion */}
             <section id="experience" className="py-32 px-8 border-t border-white/5 bg-zinc-950/20">
                 <div className="max-w-7xl mx-auto space-y-20">
                     <div className="text-center space-y-4">
@@ -289,69 +296,83 @@ export default function BrandLandingPage() {
                         <div className="w-20 h-[2px] bg-emerald-500/30 rounded-full mx-auto" />
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 font-sans items-stretch">
-                        {/* Phase 1 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="flex flex-col h-full justify-between p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
-                        >
-                            <div>
-                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
-                                    <Cpu className="w-6 h-6 text-emerald-400" />
-                                </div>
-                                <h3 className="text-2xl font-bold font-serif text-white min-h-[80px] flex items-center">
-                                    Phase 1: Brand Governance & USP Isolation
-                                </h3>
-                            </div>
-                            <p className="text-zinc-400 font-light leading-relaxed break-words mt-6 flex-grow">
-                                Auditing company briefs, analyzing historic metrics patterns, and mapping past retention/CTR parameters to isolate the singular winning value proposition—hammering it relentlessly until the market builds permanent muscle memory for the brand.
-                            </p>
-                        </motion.div>
+                    <div className="relative max-w-4xl mx-auto pl-8 md:pl-12 space-y-12">
+                        {/* Vertical Flow Line */}
+                        <div className="absolute left-[23px] md:left-[31px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-emerald-500/40 via-emerald-500/20 to-transparent pointer-events-none" />
 
-                        {/* Phase 2 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.15 }}
-                            className="flex flex-col h-full justify-between p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
-                        >
-                            <div>
-                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
-                                    <Layers className="w-6 h-6 text-emerald-400" />
+                        {[
+                            {
+                                step: "01",
+                                sub: "USP Isolation",
+                                title: "Brief Deconstruction",
+                                desc: "Analyzing the corporate brief to lock down one singular core value proposition."
+                            },
+                            {
+                                step: "02",
+                                sub: "Psychological Copy",
+                                title: "StoryBrand Scripting",
+                                desc: "Writing the narrative framework placing the target audience as the active hero."
+                            },
+                            {
+                                step: "03",
+                                sub: "Tech Optimization",
+                                title: "AI Pre-Visualization",
+                                desc: "Generating rapid storyboard frames and rough structural visual references."
+                            },
+                            {
+                                step: "04",
+                                sub: "Brand Alignment",
+                                title: "Governance Approval",
+                                desc: "Running a tight client compliance check based on core values and brand identity."
+                            },
+                            {
+                                step: "05",
+                                sub: "Shoot & Post",
+                                title: "Full-Stack Production",
+                                desc: "Executing in-house cinematography and cutting the asset for high algorithmic retention."
+                            },
+                            {
+                                step: "06",
+                                sub: "Ad Architecture",
+                                title: "Meta-Distribution",
+                                desc: "Launching across YouTube/Instagram organically alongside targeted ad manager campaigns."
+                            },
+                            {
+                                step: "07",
+                                sub: "Performance Report",
+                                title: "ROI Data Analytics",
+                                desc: "Auditing campaign retention, CTR, and delivery metrics after 7 days of live traction."
+                            }
+                        ].map((item, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, x: -20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                className="group relative flex items-start space-x-6 md:space-x-10"
+                            >
+                                {/* Connector Dot */}
+                                <div className="relative z-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-zinc-950 border border-emerald-500/20 text-emerald-400 flex items-center justify-center font-mono text-sm md:text-base font-bold shadow-2xl transition-all duration-500 group-hover:bg-emerald-500 group-hover:text-zinc-950 group-hover:border-emerald-500 group-hover:shadow-emerald-500/20 shrink-0">
+                                    {item.step}
                                 </div>
-                                <h3 className="text-2xl font-bold font-serif text-white min-h-[80px] flex items-center">
-                                    Phase 2: Production Multi-Formatting
-                                </h3>
-                            </div>
-                            <p className="text-zinc-400 font-light leading-relaxed break-words mt-6 flex-grow">
-                                Maximizing asset value and development speed by building synchronized multi-platform structures (capturing 16:9 master angles alongside high-fidelity iPhone BTS frames) to feed distinct channels simultaneously.
-                            </p>
-                        </motion.div>
 
-                        {/* Phase 3 */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: 0.3 }}
-                            className="flex flex-col h-full justify-between p-8 rounded-3xl bg-zinc-950/40 border border-white/5 hover:border-emerald-500/10 transition-colors"
-                        >
-                            <div>
-                                <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6">
-                                    <ShieldCheck className="w-6 h-6 text-emerald-400" />
+                                {/* Content Card */}
+                                <div className="flex-grow bg-zinc-950/40 border border-white/5 hover:border-emerald-500/30 p-6 md:p-8 rounded-3xl transition-all duration-500 hover:bg-zinc-950/80 shadow-2xl">
+                                    <div className="flex items-center space-x-2">
+                                        <span className="font-mono text-[10px] md:text-xs text-emerald-400 font-bold uppercase tracking-wider bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-1 rounded-full">
+                                            Step {item.step} | {item.sub}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-xl md:text-2xl font-serif font-bold text-white mt-4 group-hover:text-emerald-400 transition-colors duration-300">
+                                        {item.title}
+                                    </h3>
+                                    <p className="text-zinc-400 text-sm md:text-base font-light leading-relaxed mt-3 break-words">
+                                        {item.desc}
+                                    </p>
                                 </div>
-                                <h3 className="text-2xl font-bold font-serif text-white min-h-[80px] flex items-center">
-                                    Phase 3: Meta-Distribution & Risk Mitigation
-                                </h3>
-                            </div>
-                            <p className="text-zinc-400 font-light leading-relaxed break-words mt-6 flex-grow">
-                                Scripting cultural trends to perfectly wrap around a brand's unique identity guidelines, allowing fast algorithmic distribution capture while safeguarding corporate equity and preventing institutional controversy.
-                            </p>
-                        </motion.div>
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </section>
