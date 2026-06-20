@@ -22,7 +22,7 @@ export default function Contact() {
                             <h3 className="text-3xl md:text-5xl font-light leading-snug">
                                 Ready to bring your <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">ideas to life?</span>
                             </h3>
-                            <p className="text-xl text-white/50 font-light max-w-lg">
+                            <p className="text-xl text-neutral-100 font-light max-w-lg">
                                 Whether you have a specific project in mind or just want to explore possibilities, I'm always open to discussing new opportunities.
                             </p>
 
@@ -37,13 +37,31 @@ export default function Contact() {
                             </div>
 
                             <div className="pt-16 flex items-center space-x-6">
-                                <a href="https://www.linkedin.com/in/saptarshi-dutta-storytelling/" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
+                                <a
+                                    href="https://www.linkedin.com/in/saptarshi-dutta-storytelling/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Visit Saptarshi's professional LinkedIn profile portfolio"
+                                    className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white hover:text-emerald-400 transition-all transform hover:scale-110"
+                                >
                                     <Linkedin className="w-6 h-6" />
                                 </a>
-                                <a href="https://www.instagram.com/fx_zicozzz" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
+                                <a
+                                    href="https://www.instagram.com/fx_zicozzz"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Visit Saptarshi's Instagram profile"
+                                    className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white hover:text-emerald-400 transition-all transform hover:scale-110"
+                                >
                                     <Instagram className="w-6 h-6" />
                                 </a>
-                                <a href="/Saptarshi_Dutta_Resume_2026.pdf" target="_blank" rel="noopener noreferrer" className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white/70 hover:text-white transition-all transform hover:scale-110">
+                                <a
+                                    href="/Saptarshi_Dutta_Resume_2026.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="View Saptarshi's Resume PDF"
+                                    className="p-4 rounded-full bg-white/5 hover:bg-white/10 text-white hover:text-emerald-400 transition-all transform hover:scale-110"
+                                >
                                     <FileText className="w-6 h-6" />
                                 </a>
                             </div>

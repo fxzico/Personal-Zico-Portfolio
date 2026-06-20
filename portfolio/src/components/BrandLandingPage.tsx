@@ -92,6 +92,8 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
                 loop
                 playsInline={true}
                 disablePictureInPicture
+                width={260}
+                height={462}
                 className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-85 transition-opacity duration-500 z-0 pointer-events-none"
             />
             {/* Dark Overlay Gradient */}
@@ -100,6 +102,7 @@ function VideoProofCard({ card, idx }: { card: typeof PROOF_CARDS[0], idx: numbe
             {/* Mute button on top-right */}
             <button
                 onClick={toggleMute}
+                aria-label="Toggle video audio playback"
                 className="absolute top-4 right-4 z-20 p-2 rounded-full bg-black/40 hover:bg-black/70 border border-white/10 text-white transition-all hover:scale-105"
             >
                 {isMuted ? <VolumeX className="w-3.5 h-3.5 text-white/70" /> : <Volume2 className="w-3.5 h-3.5 text-emerald-400" />}
@@ -198,7 +201,7 @@ export default function BrandLandingPage() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-lg md:text-2xl text-zinc-400 font-light max-w-3xl mx-auto leading-relaxed break-words"
+                        className="text-lg md:text-2xl text-zinc-100 font-light max-w-3xl mx-auto leading-relaxed break-words"
                     >
                         Orchestrating 5.2M+ organic views for national brands by bridging consumer behavioral psychology with high-velocity internal production.
                     </motion.p>
@@ -218,15 +221,15 @@ export default function BrandLandingPage() {
                     className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-xs tracking-wider"
                 >
                     <div className="border border-white/5 bg-zinc-950/40 rounded-2xl flex flex-col items-start gap-1 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 group hover:border-emerald-500/20 transition-all duration-300">
-                        <span className="text-zinc-500">REACH</span>
+                        <span className="text-zinc-300">REACH</span>
                         <span className="text-emerald-400 font-bold">5.2M+ Organic Reach Orchestrated</span>
                     </div>
                     <div className="border border-white/5 bg-zinc-950/40 rounded-2xl flex flex-col items-start gap-1 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 group hover:border-emerald-500/20 transition-all duration-300">
-                        <span className="text-zinc-500">PIPELINE</span>
+                        <span className="text-zinc-300">PIPELINE</span>
                         <span className="text-emerald-400 font-bold">100% In-House Pipeline Control</span>
                     </div>
                     <div className="border border-white/5 bg-zinc-950/40 rounded-2xl flex flex-col items-start gap-1 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5 group hover:border-emerald-500/20 transition-all duration-300">
-                        <span className="text-zinc-500">EXECUTION</span>
+                        <span className="text-zinc-300">EXECUTION</span>
                         <span className="text-emerald-400 font-bold">Zero Campaign Friction</span>
                     </div>
                 </motion.div>
@@ -367,7 +370,7 @@ export default function BrandLandingPage() {
                                     <h3 className="text-xl md:text-2xl font-serif font-bold text-white mt-4 group-hover:text-emerald-400 transition-colors duration-300">
                                         {item.title}
                                     </h3>
-                                    <p className="text-zinc-400 text-sm md:text-base font-light leading-relaxed mt-3 break-words">
+                                    <p className="text-zinc-100 text-sm md:text-base font-light leading-relaxed mt-3 break-words">
                                         {item.desc}
                                     </p>
                                 </div>

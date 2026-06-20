@@ -47,7 +47,7 @@ export default function About() {
                     <div className="w-20 h-1 bg-white/20 rounded-full mb-12" />
                     
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                        <div className="space-y-6 text-xl text-white/70 leading-relaxed font-light">
+                        <div className="space-y-6 text-xl text-neutral-100 leading-relaxed font-light">
                             <p>
                                 Hi, I'm <span className="text-white font-medium">Saptarshi</span>, a <span className="text-white font-medium">Visual Designer & Motion Creator</span> with over 4 years of experience seamlessly bridging storytelling with technology.
                             </p>
@@ -72,7 +72,7 @@ export default function About() {
                                                 <ExternalLink className="w-4 h-4 text-emerald-400 opacity-50 group-hover:opacity-100 transition-all" />
                                             )}
                                         </h3>
-                                        <p className="text-white/60 text-sm leading-relaxed">
+                                        <p className="text-neutral-100 text-sm leading-relaxed">
                                             {feature.description}
                                         </p>
                                     </>

@@ -9,6 +9,7 @@ export default function StickyLinkedIn() {
             href="https://www.linkedin.com/in/saptarshi-dutta-storytelling/" 
             target="_blank" 
             rel="noopener noreferrer"
+            aria-label="Visit Saptarshi's professional LinkedIn profile portfolio"
             className="fixed bottom-6 right-6 z-[100] group flex items-center bg-[#0a66c2] hover:bg-[#004182] text-white px-4 py-3 rounded-full shadow-2xl shadow-blue-500/20 transition-all duration-300 hover:scale-105 hover:-translate-y-1"
         >
             <Linkedin className="w-5 h-5 mr-0 group-hover:mr-2 transition-all duration-300" />
